@@ -197,7 +197,10 @@ public class FDFireflyIceChannelBLE implements FDFireflyIceChannel {
     void connectionStateChange(final BluetoothGatt gatt, final int status, final int newState) {
         if (newState == BluetoothProfile.STATE_CONNECTED) {
             FDFireflyDeviceLogger.debug(log, "FD010905", "connected to firefly");
-            bluetoothGatt.discoverServices();
+            try {
+                bluetoothGatt.discoverServices();
+            }
+            catch (NullPointerException ex) {}
         } else
         if (newState == BluetoothProfile.STATE_DISCONNECTED) {
             FDFireflyDeviceLogger.debug(log, "FD010906", "disconnected from firefly");
