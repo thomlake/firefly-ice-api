@@ -140,8 +140,11 @@ public class FDFireflyIceChannelBLE implements FDFireflyIceChannel {
             if (bluetoothGattCharacteristic != null) {
                 bluetoothGatt.setCharacteristicNotification(bluetoothGattCharacteristic, true);
             }
-            bluetoothGatt.disconnect();
-            bluetoothGatt.close();
+            try {
+                bluetoothGatt.disconnect();
+                bluetoothGatt.close();
+            }
+            catch (NullPointerException ex) {}
         }
         bluetoothGatt = null;
         bluetoothGattCharacteristic = null;
