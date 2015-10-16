@@ -30,8 +30,7 @@ public class FDFireflyIceManager {
         this.bluetoothAdapter = bluetoothAdapter;
         this.serviceUUID = serviceUUID;
         this.delegate = delegate;
-
-        scanCallback = new ScanCallback() {
+        this.scanCallback = new ScanCallback() {
 
             public void onScanResult(final int callbackType, final ScanResult result) {
                 activity.runOnUiThread(
